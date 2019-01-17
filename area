@@ -1,0 +1,67 @@
+import 'dart:math';
+import 'dart:io';
+
+main() {
+  print('rectangle or triagle or circle');
+  String shape = stdin.readLineSync();
+  if (shape == 'rectangle') {
+    rectangle one = rectangle();
+    print('enter x :');
+    one.x = double.parse(stdin.readLineSync());
+    print('enter y :');
+    one.y = double.parse(stdin.readLineSync());
+    one.getArea();
+  }
+  else if(shape == 'triangle'){
+    triangle two = triangle();
+    print('enter x :');
+    two.x = double.parse(stdin.readLineSync());
+    print('enter y :');
+    two.y = double.parse(stdin.readLineSync());
+    two.getArea();
+  }
+  else if(shape == 'circle') {
+    circle two = circle();
+    print('enter r :');
+    two.r = double.parse(stdin.readLineSync());
+    two.getArea();
+  }
+
+
+}
+
+abstract class shape {
+  double area;
+
+  double getArea();
+}
+
+class rectangle extends shape {
+  double x, y;
+
+  @override
+  double getArea() {
+    area = x * y;
+    print(area);
+  }
+}
+
+class triangle extends shape {
+  double x, y;
+
+  @override
+  double getArea() {
+    area = x * y * 0.5;
+    print(area);
+  }
+}
+
+class circle extends shape {
+  double r;
+
+  @override
+  double getArea() {
+    area = pi * r * r;
+    print(area);
+  }
+}
